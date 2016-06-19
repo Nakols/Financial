@@ -15,24 +15,35 @@
 using namespace std;
 
 
-int main()
+int main(int argc, char*argv[])
 {
     
     double principal = 0.0;
-    cout << "Enter the principal amount: ";
-    cin >> principal;
-    
     double humanInterest = 0.0;
-    cout << "Enter the interest rate: ";
-    cin >> humanInterest;
+    int yearsOfLoan = 0;
+
+    if ( argc == 1)
+    {
+        cout << "Enter the principal amount: ";
+        cin >> principal;
+        
+        cout << "Enter the interest rate: ";
+        cin >> humanInterest;
+        
+        cout << "Enter years of loan: ";
+        cin >> yearsOfLoan;
+        
+    } else {
+        principal = atof(argv[1]);
+        humanInterest = atof(argv[2]);
+        yearsOfLoan = atoi(argv[3]);
+    }
+    
+    cout << "Loan Principal: " << principal << endl;
+    cout << "Interest Rate: " << humanInterest << "%" << endl;
+    cout << "Time Period: " << yearsOfLoan  << " year(s)" << endl;
     
     double interest = divisor(humanInterest, gpercentDenominator);
-    
-    int yearsOfLoan = 0;
-    
-    cout << "Enter years of loan: ";
-    cin >> yearsOfLoan;
-    
     double monthInterest = divisor(interest, gmonthInYear);
     long monthsOfLoan = multiplier(yearsOfLoan, gmonthInYear);
     
@@ -87,4 +98,5 @@ int main()
     return 0;
 }
 
+    
 
