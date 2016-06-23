@@ -30,7 +30,37 @@ enum AmortEnum
     INTEREST_OUT = 12,
     PRINCIPAL_OUT = 12,
     BALANCE_OUT = 16
+    
 };
+
+string AmortHeader[] =
+{
+    "Yr",
+    "Mn",
+    "CumMn",
+    "Payment",
+    "Interest",
+    "Principal",
+    "Balance"
+};
+
+void printAmortHeader() {
+    
+    cout << endl <<
+        setw(YR_OUT) << AmortHeader[0] << " " <<
+        setw(MN_OUT) << AmortHeader[1] << " " <<
+        setw(CU_MN_OUT) << AmortHeader[2] << " " <<
+        setw(PAYMENT_OUT) << AmortHeader[3] << " " <<
+        setw(INTEREST_RATE) << AmortHeader[4] << " " <<
+        setw(PRINCIPAL_OUT) << AmortHeader[5] << " " <<
+        setw(BALANCE_OUT) << AmortHeader[6] << " "
+        << endl <<
+        endl;
+    
+
+    
+}
+
 
 int main(int argc, char*argv[])
 {
@@ -84,6 +114,14 @@ int main(int argc, char*argv[])
     long currLoanmonth = 1;
     
     while(currLoanmonth <= monthsOfLoan){
+        
+        if(switchYear != year) {
+            switchYear = year;
+            
+            printAmortHeader();
+            
+        }
+        
         gAmortizeMonth amortMonth;
         
         currInterestPayment = currBalance*monthInterest;
